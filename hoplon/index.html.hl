@@ -1,13 +1,24 @@
 <script type="text/hoplon">
   (page "index.html"
     (:require
-      [tailrecursion.hoplon.util :as hutil]))
+      [tailrecursion.hoplon.util :as hutil]
+      [tailrecursion.hoplon.storage-atom  :refer [local-storage]]))
+
+  ;; stem cell
+  (def state (->
+               (cell [0, 6, 6, 6, 6, 6, 6, 0, 6, 6, 6, 6, 6, 6])
+               ))
 
   ;; local state cell
   (def route (hutil/route-cell 100 "#/"))
 
   (defc= is-home? (= "#/" route))
   (defc= is-about? (= "#/about" route))
+
+  ;; state transition functions 
+  (defn random-board []
+    (reset! state
+            (vec (repeatedly 14 #(rand-int 10)))))
 </script>
 
 
@@ -34,28 +45,32 @@
       </div>
 
       <div class="col-md-12" do-class='{{ (cell= {:hidden (not is-home?)}) }}'>
-        <h4>The Game</h4>
         <table class="table table-bordered">
           <tbody>
             <tr>
-              <td rowspan="2">K</td>
-              <td>1</td>
-              <td>2</td>
-              <td>3</td>
-              <td>4</td>
-              <td>5</td>
-              <td>6</td>
-              <td rowspan="2">K</td>
+              <td class="player1" rowspan="2">
+                <text>~(get state 0)</text>
+              </td>
+              <td class="player1"><text>~(get state 1)</text></td>
+              <td class="player1"><text>~(get state 2)</text></td>
+              <td class="player1"><text>~(get state 3)</text></td>
+              <td class="player1"><text>~(get state 4)</text></td>
+              <td class="player1"><text>~(get state 5)</text></td>
+              <td class="player1"><text>~(get state 6)</text></td>
+              <td class="player2" rowspan="2">
+                <text>~(get state 7)</text>
+              </td>
             </tr>
             <tr>
-              <td>1</td>
-              <td>2</td>
-              <td>3</td>
-              <td>4</td>
-              <td>5</td>
-              <td>6</td>
+              <td class="player2"><text>~(get state 8)</text></td>
+              <td class="player2"><text>~(get state 9)</text></td>
+              <td class="player2"><text>~(get state 10)</text></td>
+              <td class="player2"><text>~(get state 11)</text></td>
+              <td class="player2"><text>~(get state 12)</text></td>
+              <td class="player2"><text>~(get state 13)</text></td>
             </tr>
           </tbody>
+          <button on-click="{{ random-board }}">random</button>
         </table>
       </div>
 
