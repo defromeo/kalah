@@ -35,15 +35,35 @@
 
       <div class="col-md-12" do-class='{{ (cell= {:hidden (not is-home?)}) }}'>
         <h4>The Game</h4>
-        <p>
-          About Kalah I found out when I was 14 from magazine. And for a week with help from my grandpa I had my own game (INSERT PHOTO). I really enjoed simpicity of this game. I know there is so many kalah online, but this particular I just create for learning framework Hoplon, which I really like by design.
-        </p>
+        <table class="table table-bordered">
+          <tbody>
+            <tr>
+              <td rowspan="2">K</td>
+              <td>1</td>
+              <td>2</td>
+              <td>3</td>
+              <td>4</td>
+              <td>5</td>
+              <td>6</td>
+              <td rowspan="2">K</td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>2</td>
+              <td>3</td>
+              <td>4</td>
+              <td>5</td>
+              <td>6</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
 
       <div class="col-md-12" do-class='{{ (cell= {:hidden (not is-about?)}) }}'>
         <h4>About</h4>
         <p>
-          empty
+          FIX IT<br>
+          About Kalah I found out when I was 14 from magazine. And for a week with help from my grandpa I had my own game (INSERT PHOTO). I really enjoed simpicity of this game. I know there is so many kalah online, but this particular I just create for learning framework Hoplon, which I really like by design.
         </p>
       </div>
 
