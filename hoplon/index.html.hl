@@ -6,7 +6,7 @@
   ;; local state cell
   (def route (hutil/route-cell 100 "#/"))
 
-  (def is-home? (cell= (= "#/" route)))
+  (defc= is-home? (= "#/" route))
   (defc= is-about? (= "#/about" route))
 </script>
 
@@ -23,7 +23,7 @@
     <div class="container">
       <div class="header">
         <ul class="nav nav-pills pull-right">
-          <li do-class='{{ (cell= {:active (= "#/" route)}) }}'>
+          <li do-class='{{ (cell= {:active is-home?}) }}'>
             <a href="#/">Home</a>
           </li>
           <li do-class='{{ (cell= {:active is-about?}) }}'>
@@ -33,10 +33,10 @@
         <h3 class="text-muted">Kalah</h3>
       </div>
 
-      <div class="col-md-12" do-class='{{ (cell= {:hidden (not= "#/" route)}) }}'>
+      <div class="col-md-12" do-class='{{ (cell= {:hidden (not is-home?)}) }}'>
         <h4>The Game</h4>
         <p>
-          About Kalah I found out when i was 14 from magazine. And for a week with help from my grandpa I had my own game (INSERT PHOTO). I really enjoed simpicity of this game. I know there is so many kalah online, but this particular I just create for learning framework Hoplon, which I really like by design.
+          About Kalah I found out when I was 14 from magazine. And for a week with help from my grandpa I had my own game (INSERT PHOTO). I really enjoed simpicity of this game. I know there is so many kalah online, but this particular I just create for learning framework Hoplon, which I really like by design.
         </p>
       </div>
 
