@@ -22,3 +22,19 @@ body {
 .container {
   width: 730px;
 }
+
+table {
+  text-align:center;
+  font-weight:bold;
+}
+td {
+  vertical-align:middle !important;
+}
+
+.player1 {
+  background-color: #F5E1E1;
+}
+
+.player2 {
+  background-color: #C4C5F5;
+}
