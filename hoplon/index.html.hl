@@ -4,10 +4,14 @@
       [tailrecursion.hoplon.util :as hutil]
       [tailrecursion.hoplon.storage-atom  :refer [local-storage]]))
 
+  ;; consts
+  (def init-board-value
+    [0, 6, 6, 6, 6, 6, 6, 0, 6, 6, 6, 6, 6, 6])
+
   ;; stem cell
   (def state (->
-               (cell [0, 6, 6, 6, 6, 6, 6, 0, 6, 6, 6, 6, 6, 6])
-               ))
+               (cell init-board-value)
+               (local-storage ::store)))
 
   ;; local state cell
   (def route (hutil/route-cell 100 "#/"))
@@ -19,6 +23,9 @@
   (defn random-board []
     (reset! state
             (vec (repeatedly 14 #(rand-int 10)))))
+
+  (defn init-board []
+    (reset! state init-board-value))
 </script>
 
 
@@ -62,14 +69,12 @@
               </td>
             </tr>
             <tr>
-              <td class="player2"><text>~(get state 8)</text></td>
-              <td class="player2"><text>~(get state 9)</text></td>
-              <td class="player2"><text>~(get state 10)</text></td>
-              <td class="player2"><text>~(get state 11)</text></td>
-              <td class="player2"><text>~(get state 12)</text></td>
-              <td class="player2"><text>~(get state 13)</text></td>
+              <loop-tpl bindings="{{ [i (range 8 14) ] }}">
+                <td class="player2"><text>~(get state i)</text></td>
+              </loop-tpl>
             </tr>
           </tbody>
+          <button on-click="{{ init-board }}">init</button>
           <button on-click="{{ random-board }}">random</button>
         </table>
       </div>
