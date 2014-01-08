@@ -1,8 +1,9 @@
-{:dependencies [[tailrecursion/boot.core   "1.1.0"]
-                [tailrecursion/boot.task   "1.0.0"]
-                [tailrecursion/hoplon      "4.0.7"]
-                [org.clojure/clojurescript "0.0-1934"]]
+{:dependencies [[tailrecursion/boot.core   "1.2.0"]
+                [tailrecursion/boot.task   "1.0.2"]
+                [tailrecursion/hoplon      "4.0.9"]
+                [org.clojure/clojurescript "0.0-2127"]]
  :require-tasks #{[tailrecursion.boot.task    :refer :all]
+                  [tailrecursion.boot.core.task    :refer :all]
                   [tailrecursion.hoplon.boot  :refer :all]}
  :public "resources/public"
  :src-static #{"resources/assets"}
